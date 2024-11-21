@@ -1,0 +1,25 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the dataset
+data = pd.read_csv('housing_data.csv')
+
+# Summary statistics for a single variable ('Price')
+print("\n=== Univariate Analysis: Summary Statistics for 'Price' ===")
+print(data['Price'].describe())
+
+# Histogram for 'Price'
+plt.figure(figsize=(8, 6))
+sns.histplot(data['Price'], kde=True)
+plt.title('Univariate Analysis - Histogram of Price')
+plt.xlabel('Price')
+plt.ylabel('Frequency')
+plt.show()
+
+# Boxplot for 'Price'
+plt.figure(figsize=(8, 6))
+sns.boxplot(x=data['Price'])
+plt.title('Univariate Analysis - Boxplot of Price')
+plt.show()
