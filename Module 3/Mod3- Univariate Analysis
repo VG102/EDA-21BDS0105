@@ -4,22 +4,25 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Load the dataset
-data = pd.read_csv('housing_data.csv')
+data = pd.read_csv('constituents.csv')
 
-# Summary statistics for a single variable ('Price')
-print("\n=== Univariate Analysis: Summary Statistics for 'Price' ===")
-print(data['Price'].describe())
+# Ensure 'Founded' is numeric (in case it's not)
+data['Founded'] = pd.to_numeric(data['Founded'], errors='coerce')
 
-# Histogram for 'Price'
+# Summary statistics for the 'Founded' column
+print("\n=== Univariate Analysis: Summary Statistics for 'Founded' ===")
+print(data['Founded'].describe())
+
+# Histogram for 'Founded'
 plt.figure(figsize=(8, 6))
-sns.histplot(data['Price'], kde=True)
-plt.title('Univariate Analysis - Histogram of Price')
-plt.xlabel('Price')
+sns.histplot(data['Founded'], kde=True)
+plt.title('Univariate Analysis - Histogram of Founded')
+plt.xlabel('Founded Year')
 plt.ylabel('Frequency')
 plt.show()
 
-# Boxplot for 'Price'
+# Boxplot for 'Founded'
 plt.figure(figsize=(8, 6))
-sns.boxplot(x=data['Price'])
-plt.title('Univariate Analysis - Boxplot of Price')
+sns.boxplot(x=data['Founded'])
+plt.title('Univariate Analysis - Boxplot of Founded')
 plt.show()
